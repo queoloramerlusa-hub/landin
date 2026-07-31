@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlantico | Tu Sitio de Apuestas Online</title>
+    
+    <style>
+
+/* --- CHAT FLOTANTE DE WHATSAPP --- */
+        .floating-chat {
+            position: fixed;
+            bottom: 30px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            text-decoration: none;
+        }
+
+        .chat-tooltip {
+            background-color: white;
+            color: #0a0f16;
+            padding: 12px 18px;
+            border-radius: 12px 12px 0 12px;
+            font-size: 0.95rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* El piquito del globo de chat */
+        .chat-tooltip::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 15px;
+            border-width: 10px 10px 0 0;
+            border-style: solid;
+            border-color: white transparent transparent transparent;
+        }
+
+        .chat-icon-container {
+            position: relative;
+        }
+
+        .chat-icon-wa {
+            background-color: var(--wa-green);
+            color: white;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 38px;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .floating-chat:hover .chat-icon-wa {
+            transform: scale(1.1) rotate(-10deg);
+        }
+
+        /* Globito rojo de notificación para generar urgencia */
+        .notification-dot {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            background-color: #ff3b30;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid var(--bg-dark);
+            animation: pulse-gold 2s infinite;
+        }
+
+
+        :root {
+            --wa-green: #25D366;
+            --bg-dark: #0a0f16;
+            --bg-card: rgba(26, 35, 50, 0.85); /* Ligeramente transparente para lucir sobre el fondo */
+            --text-light: #ffffff;
+            --gold: #FFD700;
+            --gold-glow: rgba(255, 215, 0, 0.6);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            background-color: var(--bg-dark); 
+            color: var(--text-light); 
+            text-align: center; 
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- SECCIÓN HERO CON VIDEO DE FONDO --- */
+        .hero { 
+            position: relative;
+            padding: 5rem 1rem 4rem; 
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Configuración del video de fondo */
+        .video-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+            z-index: 0;
+            object-fit: cover;
+            /* Filtro oscuro para que el texto se lea perfecto */
+            filter: brightness(0.3) contrast(1.2); 
+        }
+
+        /* Contenido por encima del video */
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        /* --- ANIMACIONES --- */
+        @keyframes pulse-gold {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(255, 215, 0, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes neon-flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { text-shadow: 0 0 10px var(--gold-glow), 0 0 20px var(--gold-glow), 0 0 30px var(--gold-glow); }
+            20%, 24%, 55% { text-shadow: none; }
+        }
+
+        /* --- ESTILOS ACTUALIZADOS --- */
+        h1 { 
+            font-size: 3.5rem; 
+            color: var(--gold); 
+            margin-bottom: 0.5rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px;
+            font-weight: 900;
+            animation: neon-flicker 4s infinite alternate;
+        }
+
+        .subtitle { 
+            font-size: 1.2rem; 
+            margin-bottom: 2.5rem; 
+            color: #e2e8f0; 
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+
+        .cta-container { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 1.2rem; 
+            max-width: 350px; 
+            margin: 0 auto 2rem; 
+        }
+
+        .btn-wa { 
+            background-color: var(--wa-green); 
+            color: white; 
+            text-decoration: none; 
+            padding: 1.1rem; 
+            font-size: 1.2rem; 
+            font-weight: bold; 
+            border-radius: 50px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 12px; 
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Efecto de brillo al pasar el mouse por el botón */
+        .btn-wa::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255,255,255,0.2);
+            transform: rotate(45deg) translateY(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .btn-wa:hover::after {
+            transform: rotate(45deg) translateY(100%);
+        }
+
+        .btn-wa:hover, .btn-wa:active { 
+            transform: translateY(-3px) scale(1.02); 
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5); 
+            border-color: white;
+        }
+
+        .urgency-badge {
+            background-color: var(--gold);
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 900;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            box-shadow: 0 0 15px var(--gold-glow);
+            animation: pulse-gold 2s infinite; /* Efecto latido agregado */
+        }
+
+        /* Sección de Beneficios */
+        .features { 
+            padding: 4rem 1rem; 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 2rem; 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            position: relative;
+            z-index: 2;
+            background: linear-gradient(180deg, transparent 0%, var(--bg-dark) 15%);
+        }
+
+        .feature-card { 
+            background: var(--bg-card); 
+            padding: 2.5rem 1.5rem; 
+            border-radius: 20px; 
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: all 0.4s ease;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Desfasamos las animaciones para que no floten todas al mismo tiempo */
+        .feature-card:nth-child(2) { animation-delay: 1s; }
+        .feature-card:nth-child(3) { animation-delay: 2s; }
+
+        .feature-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            border-color: var(--gold);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.2rem;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+        }
+
+        .feature-card h3 { 
+            color: white;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        .feature-card p {
+            color: #cbd5e1;
+            font-size: 1rem;
+        }
+
+        footer { 
+            padding: 3rem 1rem; 
+            background-color: #030507;
+            border-top: 1px solid #1a2332; 
+            font-size: 0.85rem; 
+            color: #64748b; 
+        }
+
+        .legal-18 { 
+            display: inline-block; 
+            border: 1px solid #64748b; 
+            padding: 6px 12px; 
+            border-radius: 4px; 
+            margin-bottom: 15px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- CHAT FLOTANTE DE WHATSAPP -->
+    <a href="https://wa.me/5493813926374?text=Hola,%20quiero%20crear%20un%20usuari0%20y%20c4rgar%20fich4s" class="floating-chat" target="_blank" rel="noopener noreferrer">
+        <div class="chat-tooltip">¡Hola! ¿Buscás cargar fichas? Hablanos 👋</div>
+        <div class="chat-icon-container">
+            <div class="chat-icon-wa">
+                <i class="fab fa-whatsapp"></i>
+            </div>
+            <span class="notification-dot">1</span>
+        </div>
+    </a>
+
+    <section class="hero">
+        <video autoplay loop muted playsinline class="video-bg">
+            <source src="pragmatic-bg.mp4" type="video/mp4">
+            Tu navegador no soporta videos HTML5.
+        </video>
+
+        <div class="hero-content">
+            <div class="urgency-badge">🔥 Bono 30% en tu primera carga</div>
+            <h1>Atlantico</h1>
+            <p class="subtitle">La plataforma más rápida y segura. Cargas y retiros instantáneos sin vueltas.</p>
+
+            <div class="cta-container">
+                <a href="https://wa.me/5493813926374?text=Hola,%20quiero%20crear%20un%20usuari0%20y%20c4rgar%20fich4s" class="btn-wa" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp" style="font-size: 1.4em;"></i>
+                    Línea 1 - Atlantico
+                </a>
+                
+                <a href="https://wa.me/5493813926467?text=Hola,%20necesito%20ayuda%20con%20un%20retiro" class="btn-wa" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp" style="font-size: 1.4em;"></i>
+                    Línea 2 - Soporte
+                </a>
+            </div>
+            <p style="font-size: 0.9rem; color: #cbd5e1; margin-top: 15px; text-shadow: 1px 1px 2px black;"><strong>⚡ Respuesta inmediata garantizada</strong></p>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature-card">
+            <div class="feature-icon">💸</div>
+            <h3>Retiros en el Acto</h3>
+            <p>Tus ganancias directo a tu cuenta bancaria o billetera virtual en minutos.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">👤</div>
+            <h3>Atención 24/7</h3>
+            <p>Atención <strong>HUMANA</strong> disponible para chatear y resolver dudas al instante.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🎰</div>
+            <h3>Miles de Juegos</h3>
+            <p>Ruleta, slots, crash games y mesas en vivo con los mejores proveedores.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="legal-18">+18 | Juega con responsabilidad</div>
+        <p>El juego compulsivo es perjudicial para la salud.</p>
+        <p style="margin-top: 15px; opacity: 0.5;">&copy; 2026 Atlantico. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
