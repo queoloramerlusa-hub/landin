@@ -3,7 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atlantico | Tu Sitio de Apuestas Online</title>
+    
+    <!-- Meta Tags para SEO y Facebook Ads (Open Graph) -->
+    <title>Atlantico | Cajeros de confianza </title>
+    <meta name="description" content="Atlantico: La plataforma de apuestas más rápida y segura. Cargas y retiros instantáneos sin vueltas. Bono del 30% en tu primera carga.">
+    <meta property="og:title" content="Atlantico | Tu Sitio de Apuestas Online">
+    <meta property="og:description" content="La plataforma más rápida y segura. Cargas y retiros instantáneos sin vueltas. ¡Jugá y ganá en el acto!">
+    <meta property="og:image" content="https://landin-iota.vercel.app/bono-30.png">
+    <meta property="og:url" content="https://landin-iota.vercel.app/"> <!-- REEMPLAZA ESTA URL POR TU DOMINIO REAL -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Atlantico">
     
     <style>
 
@@ -315,11 +324,29 @@
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Meta Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '4012438412220143'); // <-- INGRESA TU ID DE PÍXEL AQUÍ
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=4012438412220143&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
 </head>
 <body>
 
     <!-- CHAT FLOTANTE DE WHATSAPP -->
-    <a href="https://wa.me/5493813926374?text=Hola,%20quiero%20crear%20un%20usuari0%20y%20c4rgar%20fich4s" class="floating-chat" target="_blank" rel="noopener noreferrer">
+    <a href="https://wa.me/5493813926374?text=Hola,%20quiero%20crear%20un%20usuari0%20y%20c4rgar%20fich4s" class="floating-chat" target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq === 'function') fbq('track', 'Lead');">
         <div class="chat-tooltip">¡Hola! ¿Buscás cargar fichas? Hablanos 👋</div>
         <div class="chat-icon-container">
             <div class="chat-icon-wa">
@@ -341,12 +368,12 @@
             <p class="subtitle">La plataforma más rápida y segura. Cargas y retiros instantáneos sin vueltas.</p>
 
             <div class="cta-container">
-                <a href="https://wa.me/5493813926374?text=Hola,%20quiero%20crear%20un%20usuari0%20y%20c4rgar%20fich4s" class="btn-wa" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/5493813926374?text=Hola,%20quiero%20crear%20un%20usuari0%20y%20c4rgar%20fich4s" class="btn-wa" target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq === 'function') fbq('track', 'Lead');">
                     <i class="fab fa-whatsapp" style="font-size: 1.4em;"></i>
                     Línea 1 - Atlantico
                 </a>
                 
-                <a href="https://wa.me/5493813926467?text=Hola,%20necesito%20ayuda%20con%20un%20retiro" class="btn-wa" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/5493813926467?text=Hola,%20necesito%20ayuda%20con%20un%20retiro" class="btn-wa" target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq === 'function') fbq('track', 'Contact');">
                     <i class="fab fa-whatsapp" style="font-size: 1.4em;"></i>
                     Línea 2 - Soporte
                 </a>
